@@ -9,7 +9,6 @@
 
 ## Prerequisites
 - [Node.js](https://nodejs.org/)
-- [google/clasp](https://github.com/google/clasp)
 
 ## Getting Started
 ### Clone the repository
