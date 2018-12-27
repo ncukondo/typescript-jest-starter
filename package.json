@@ -10,7 +10,7 @@
     "copy": "cpx src/*.html dist",
     "clean": "rimraf dist",
     "watch": "webpack --mode development --watch",
-    "start:dev": "npm run clean && webpack && npm run copy && webpack-dev-server"
+    "start": "npm run clean && webpack && npm run copy && webpack-dev-server"
   },
   "keywords": [
     "typescript",
