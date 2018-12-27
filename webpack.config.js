@@ -8,19 +8,22 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist')
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080,
+    open: true,
+  },
   module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        use: 'ts-loader'
-      }
-    ]
+    rules: [{
+      test: /\.ts$/,
+      use: 'ts-loader'
+    }]
   },
   resolve: {
     extensions: [
       '.ts'
     ]
   },
-  plugins: [
-  ]
+  plugins: []
 };

@@ -1,12 +1,16 @@
 {
   "name": "typescript-jest-starter",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "lint": "tslint --fix src/**/*.ts",
     "test": "jest",
-    "build": "npm run lint && npm run test && rimraf dist && webpack && cpx src/*.html dist"
+    "build": "rimraf dist && webpack --mode production && npm run copy",
+    "copy": "cpx src/*.html dist",
+    "clean": "rimraf dist",
+    "watch": "webpack --mode development --watch",
+    "start:dev": "npm run clean && webpack && npm run copy && webpack-dev-server"
   },
   "keywords": [
     "typescript",
@@ -27,7 +31,8 @@
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.2.2",
     "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
   },
   "jest": {
     "transform": {
