@@ -1,16 +1,21 @@
 {
-  "name": "typescript-jest-starter",
+  "name": "@ncukondo/typescript-jest-starter",
   "version": "0.1.1",
   "description": "",
-  "main": "index.js",
+  "main": "./built/index.js",
   "scripts": {
     "lint": "tslint --fix src/**/*.ts",
     "test": "jest",
-    "build": "rimraf dist && webpack --mode production && npm run copy",
-    "copy": "cpx src/*.html dist",
-    "clean": "rimraf dist",
-    "watch": "webpack --mode development --watch",
-    "start": "npm run clean && webpack && npm run copy && webpack-dev-server"
+    "copy-to-product": "cpx src/*.html product",
+    "copy-to-dist": "cpx src/*.html dist",
+    "watch": "npm run build-dev && webpack --watch --config webpack.dev.config.js",
+    "start": "webpack-dev-server --config webpack.dev.config.js",
+    "clean-dist": "rimraf dist",
+    "clean-built": "rimraf built",
+    "clean-product": "rimraf product",
+    "build": "npm run clean-product && webpack --config webpack.production.config.js && npm run copy-to-product",
+    "build-dev": "npm run clean-dist &&  npm run copy-to-dist && webpack --config webpack.dev.config.js",
+    "build-module": "npm run clean-built && yarn run tsc -p ./tsconfig.module.json"
   },
   "keywords": [
     "typescript",
@@ -32,7 +37,8 @@
     "typescript": "^3.2.2",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.1.5"
   },
   "jest": {
     "transform": {
